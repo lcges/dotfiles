@@ -12,10 +12,10 @@ then
   cp -a ~/.config/dotfiles/ssh ~/.ssh
 fi
 
-if which vim
+if which >/dev/null vim
 then
   vim +PlugInstall +qall
-elif which nvim
+elif which >/dev/null nvim
 then
   nvim +PlugInstall +qall
 fi
