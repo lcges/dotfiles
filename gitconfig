@@ -1,6 +1,6 @@
 [user]
-	name = Paweł Nowak
-	email = czesio@gmx.com
+	name = Leszek Czak
+	email = lc@idesign.center
 [core]
 	editor = vim
 	excludesfile = ~/.config/dotfiles/gitignore_global

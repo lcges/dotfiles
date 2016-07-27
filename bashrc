@@ -63,10 +63,20 @@ PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\] $(parse_git_branch)\n\$ '
 eval "$(dircolors -b)"
 alias grep='grep --color'
 
+alias uu='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
+alias ll='ls -alFh'
 alias info='info --vi-keys'
 alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
 
 if which >/dev/null nvim
 then
   alias vim=nvim
+fi
+
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
