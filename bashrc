@@ -61,5 +61,9 @@ eval "$(dircolors -b)"
 alias grep='grep --color'
 
 alias info='info --vi-keys'
-alias vim=nvim
 alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
+
+if which >/dev/null nvim
+then
+  alias vim=nvim
+fi
