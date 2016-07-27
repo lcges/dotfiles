@@ -1,7 +1,8 @@
 #!/bin/bash
 
-ln -sf .config/dotfiles/bashrc ~/.bashrc
-ln -sf .config/dotfiles/jshintrc ~/.jshintrc
-ln -sf .config/dotfiles/gitconfig ~/.gitconfig
+ln -sfT .config/dotfiles/bashrc ~/.bashrc
+ln -sfT .config/dotfiles/jshintrc ~/.jshintrc
+ln -sfT .config/dotfiles/gitconfig ~/.gitconfig
+ln -sfT .config/dotfiles/tmux.conf ~/.tmux.conf
 ln -sfT .config/dotfiles/vim ~/.vim
 ln -sfT dotfiles/vim ~/.config/nvim
