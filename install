@@ -6,3 +6,8 @@ ln -sfT .config/dotfiles/gitconfig ~/.gitconfig
 ln -sfT .config/dotfiles/tmux.conf ~/.tmux.conf
 ln -sfT .config/dotfiles/vim ~/.vim
 ln -sfT dotfiles/vim ~/.config/nvim
+
+if ! [ -e ~/.ssh ]
+then
+  cp -a ~/.config/dotfiles/ssh ~/.ssh
+fi
