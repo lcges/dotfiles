@@ -1,0 +1,10 @@
+[user]
+	name = Paweł Nowak
+	email = czesio@gmx.com
+[core]
+	editor = vim
+	excludesfile = ~/.config/dotfiles/gitignore_global
+[merge]
+	tool = vimdiff
+[push]
+	default = simple
