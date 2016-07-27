@@ -11,3 +11,11 @@ if ! [ -e ~/.ssh ]
 then
   cp -a ~/.config/dotfiles/ssh ~/.ssh
 fi
+
+if which vim
+then
+  vim +PlugInstall +qall
+elif which nvim
+then
+  nvim +PlugInstall +qall
+fi
