@@ -1,0 +1,12 @@
+"set guifont=Ubuntu\ Mono\ derivative\ PowerLine\ 13
+set guifont=Envy\ Code\ R\ for\ Powerline\ 12 " set the X11 font to use
+set guioptions-=T             " remove toolbar
+set guioptions-=m             " remove menu
+set guioptions-=L             " remove scrollbars
+set guioptions-=r             " remove scrollbars
+set linespace=1               " space between lines of text
+set mousehide                 " hide the mouse when typing text
+
+" Make shift-insert work like in Xterm
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>

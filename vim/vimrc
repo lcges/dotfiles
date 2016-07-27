@@ -1,0 +1,208 @@
+if v:progname =~? "evim"
+  finish
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Sensible default settings
+Plug 'tpope/vim-sensible'
+
+" UI
+Plug 'Shougo/vimproc.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-vinegar'
+Plug 'w0ng/vim-hybrid'
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/lastpos.vim'
+Plug 'scrooloose/syntastic'
+
+" General edit tools
+Plug 'tpope/vim-surround'
+Plug 'matchit.zip'
+
+" Tools integration
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/loremipsum'
+
+if executable('task')
+  Plug 'farseer90718/vim-taskwarrior'
+endif
+
+" Snippets
+Plug 'mattn/emmet-vim'
+
+" Ruby/rails
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
+Plug 'kchmck/vim-coffee-script'
+
+" JavaScript
+Plug 'pangloss/vim-javascript'
+Plug 'digitaltoad/vim-jade'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Other filetypes
+Plug 'cespare/vim-toml'
+Plug 'evanmiller/nginx-vim-syntax'
+Plug 'ekalinin/Dockerfile.vim'
+
+call plug#end()
+
+let mapleader = ","
+
+set nobackup            " do not keep a backup file
+set history=50          " keep 50 lines of command line history
+set sw=2 ts=2
+set scrolloff=2
+set ignorecase smartcase
+set expandtab
+set foldmethod=marker
+set number
+
+if exists('+cryptmethod')
+  " When encrypting any file, use the much stronger blowfish algorithm
+  set cryptmethod=blowfish
+  " Don't store data in additional files when using encryption
+  autocmd BufReadPost * if &key != "" | set noswapfile nowritebackup viminfo=
+        \ nobackup noshelltemp history=0 secure | endif
+endif
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+  " Use special characters in statusbar
+  let g:airline_powerline_fonts = 1
+  if !has("gui_running") && &term =~ 'linux'
+    colorscheme elflord
+  else
+    try
+      set background=dark
+      let g:hybrid_custom_term_colors = 1
+      colorscheme hybrid
+    catch /^Vim\%((\a\+)\)\=:E185/
+      set background=light
+    endtry
+  endif
+endif
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+au!
+
+" Set filetype specific options
+autocmd FileType text     setlocal textwidth=78
+autocmd FileType go       setlocal noexpandtab
+autocmd FileType make     setlocal noexpandtab ts=8 sw=8
+autocmd FileType nginx    setlocal expandtab ts=4 sw=4
+autocmd FileType c        setlocal noexpandtab ts=4 sw=4
+autocmd FileType cpp      setlocal noexpandtab ts=4 sw=4
+autocmd FileType php      setlocal expandtab ts=4 sw=4
+autocmd FileType gitolite setlocal expandtab ts=4 sw=4
+
+augroup END
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+                  \ | wincmd p | diffthis
+endif
+
+" Use space to open/close folds in normal mode
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+
+" Maintain a visual selection while indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Used by vim-rails to preview pages
+command! -bar -nargs=1 OpenURL :!chromium <args>
+
+" Disable F1 help because its dumb
+nmap <F1> :echo<CR>
+imap <F1> <C-o>:echo<CR>
+
+" F3 retabs the buffer and removes any trailing whitespace
+nnoremap <silent> <F3> :retab<CR>:call <SID>StripTrailingWhitespaces()<CR>
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s = @/
+  let l = line(".")
+  let c = col(".")
+
+  %s/\s\+$//e
+  " Clean up: restore previous search history and cursor position.
+  let @/ = _s
+  call cursor(l, c)
+endfunction
+
+" F4 toggles paste mode
+nnoremap <F4> :set invpaste paste?<Enter>
+imap <F4> <C-O><F4>
+set pastetoggle=<F4>
+
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" enable airline buffers display
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" vim-go settings
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_list_type = "quickfix"
+
+" ultisnips settings
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" tagbar settings
+nnoremap <leader>t :TagbarToggle<cr>
+
+" syntastic settings
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active' }
+let g:syntastic_javascript_checkers = ['jshint']
+
+" Set gitolite custom folding
+autocmd FileType gitolite setlocal foldmethod=expr
+      \ foldexpr=GetGitoliteFold(v:lnum)
+function! GetGitoliteFold(lnum)
+  if getline(a:lnum + 1) =~? '\v^repo\s'
+    return '<1'
+  endif
+  if getline(a:lnum) =~? '\v^repo\s' || indent(a:lnum) >= &shiftwidth
+    return '1'
+  endif
+  if getline(a:lnum) =~? '\v^\s*#'
+    return '='
+  endif
+  return '0'
+endfunction
+
+" Fix typoos
+iabbrev directroy directory
