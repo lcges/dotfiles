@@ -9,9 +9,12 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+vagrant-ssh-options() {
+  vagrant ssh-config | grep -vE '^$|^Host ' | awk -v ORS=' ' '{print "-o " $1 "=" $2}'
+}
+
 vagrant-scp() {
-  OPTIONS=`vagrant ssh-config | grep -v '^Host ' | awk -v ORS=' ' '{print "-o " $1 "=" $2}'`
-  scp ${OPTIONS} "$@"
+  scp $(vagrant-ssh-options) "$@"
 }
 
 docker-cleanup() {
