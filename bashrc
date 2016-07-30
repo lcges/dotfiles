@@ -66,7 +66,7 @@ alias grep='grep --color'
 alias info='info --vi-keys'
 alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
 
-if which >/dev/null nvim
+if which 2>/dev/null nvim
 then
   alias vim=nvim
 fi
