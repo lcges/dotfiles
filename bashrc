@@ -63,12 +63,12 @@ PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\] $(parse_git_branch)\n\$ '
 eval "$(dircolors -b)"
 alias grep='grep --color'
 
-alias uu='sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y'
+alias uu='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast autoremove -y'
 alias ll='ls -alFh'
 alias info='info --vi-keys'
 alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
 
-if which >/dev/null nvim
+if which >/dev/null 2>&1 nvim
 then
   alias vim=nvim
 fi
