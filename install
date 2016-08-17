@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ln -sfT .config/dotfiles/inputrc ~/.inputrc
 ln -sfT .config/dotfiles/bashrc ~/.bashrc
 ln -sfT .config/dotfiles/jshintrc ~/.jshintrc
 ln -sfT .config/dotfiles/gitconfig ~/.gitconfig
