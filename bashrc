@@ -9,6 +9,10 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
+gocol() {
+  go doc "$@" | vim -Rnc "setf go" -
+}
+
 vagrant-ssh-options() {
   vagrant ssh-config | grep -vE '^$|^Host ' | awk -v ORS=' ' '{print "-o " $1 "=" $2}'
 }
