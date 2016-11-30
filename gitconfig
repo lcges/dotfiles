@@ -1,6 +1,7 @@
 [user]
 	name = Paweł Nowak
 	email = czesio@gmx.com
+	signingkey = 830E7A482E0D7272
 [core]
 	editor = vim
 	excludesfile = ~/.config/dotfiles/gitignore_global
