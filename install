@@ -8,15 +8,12 @@ ln -sfT .config/dotfiles/tmux.conf ~/.tmux.conf
 ln -sfT .config/dotfiles/vim ~/.vim
 ln -sfT dotfiles/vim ~/.config/nvim
 
-if ! [ -e ~/.ssh ]
-then
+if ! [[ -e ~/.ssh ]]; then
   cp -a ~/.config/dotfiles/ssh ~/.ssh
 fi
 
-if which >/dev/null vim
-then
+if which >/dev/null vim; then
   vim +PlugInstall +qall
-elif which >/dev/null nvim
-then
+elif which >/dev/null nvim; then
   nvim +PlugInstall +qall
 fi
