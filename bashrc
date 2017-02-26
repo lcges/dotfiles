@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+[[ -e ~/.bashrc_custom ]] && . ~/.bashrc_custom
+
 parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -36,7 +38,7 @@ unset HISTFILESIZE
 # Append to the history file, don't overwrite it.
 shopt -s histappend
 
-PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\] $(parse_git_branch)\n\$ '
+PS1="\n\[\e[3${PROMPT_COLOR:-2}m\]\u@\h \[\e[33m\]\w\[\e[0m\] \$(parse_git_branch)\n\$ "
 
 eval "$(dircolors -b)"
 alias grep='grep --color'
@@ -44,7 +46,4 @@ alias grep='grep --color'
 alias info='info --vi-keys'
 alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
 
-if which >/dev/null 2>&1 nvim
-then
-  alias vim=nvim
-fi
+which >/dev/null 2>&1 nvim && alias vim=nvim
