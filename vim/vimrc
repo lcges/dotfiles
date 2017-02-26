@@ -51,6 +51,7 @@ Plug 'cespare/vim-toml'
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 call plug#end()
 
