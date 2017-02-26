@@ -11,3 +11,5 @@
 	default = simple
 [commit]
 	gpgsign = true
+[http "https://gopkg.in"]
+	followRedirects = true
