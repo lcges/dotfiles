@@ -26,32 +26,6 @@ docker-cleanup() {
   docker rmi $(docker images -q -f dangling=true)
 }
 
-_ssh_add() {
-  [ "$SSH_CONNECTION" ] && return
-  local key=$HOME/.ssh/id_rsa
-  ssh-add -l >/dev/null || ssh-add $key
-}
-
-ssh() {
-  _ssh_add
-  command ssh "$@"
-}
-
-scp() {
-  _ssh_add
-  command scp "$@"
-}
-
-git() {
-  case $1 in
-    push|pull|fetch)
-      _ssh_add
-      ;;
-  esac
-
-  command git "$@"
-}
-
 # Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignorespace:ignoredups
 
