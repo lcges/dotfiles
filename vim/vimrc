@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/lastpos.vim'
 Plug 'scrooloose/syntastic'
+Plug 'christoomey/vim-tmux-navigator'
 
 " General edit tools
 Plug 'tpope/vim-surround'
@@ -157,6 +158,11 @@ function! <SID>StripTrailingWhitespaces()
   let @/ = _s
   call cursor(l, c)
 endfunction
+
+" Fix ctrl-h in neovim
+if has('nvim')
+  nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+endif
 
 " F4 toggles paste mode
 nnoremap <F4> :set invpaste paste?<Enter>
