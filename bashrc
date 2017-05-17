@@ -41,7 +41,7 @@ shopt -s histappend
 # Disable special handling of !
 set +o histexpand
 
-PS1="\n\[\e[3${PROMPT_COLOR:-2}m\]\u@\h \[\e[33m\]\w\[\e[0m\] \$(parse_git_branch)\n\$ "
+PS1="\n\[\e[3${PROMPT_COLOR:-2}m\]\u@\h \[\e[33m\]\w\[\e[0m\] \$(parse_git_branch)\n\\$ "
 
 eval "$(dircolors -b)"
 alias grep='grep --color'
