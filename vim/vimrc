@@ -21,7 +21,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " General edit tools
 Plug 'tpope/vim-surround'
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 
 " Tools integration
 Plug 'tpope/vim-fugitive'
