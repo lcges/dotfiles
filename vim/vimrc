@@ -68,7 +68,10 @@ set ignorecase smartcase
 set expandtab
 set foldmethod=marker
 set number
-set inccommand=nosplit
+
+if has('nvim')
+  set inccommand=nosplit
+endif
 
 if exists('+cryptmethod')
   " When encrypting any file, use the much stronger blowfish algorithm
