@@ -18,6 +18,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/lastpos.vim'
 Plug 'scrooloose/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'machakann/vim-highlightedyank'
 
 " General edit tools
 Plug 'tpope/vim-surround'
