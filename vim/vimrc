@@ -50,7 +50,7 @@ Plug 'fatih/vim-go'
 
 " Other filetypes
 Plug 'cespare/vim-toml'
-Plug 'evanmiller/nginx-vim-syntax'
+Plug 'chr4/nginx.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
