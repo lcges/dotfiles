@@ -35,16 +35,11 @@ endif
 " Snippets
 Plug 'mattn/emmet-vim'
 
-" Ruby/rails
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
-Plug 'kchmck/vim-coffee-script'
-
 " JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'digitaltoad/vim-jade'
 Plug 'nikvdp/ejs-syntax'
+Plug 'kchmck/vim-coffee-script'
 
 " Go
 Plug 'fatih/vim-go'
