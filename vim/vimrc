@@ -180,10 +180,20 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_skip_empty_sections = 1
 
 " vim-go settings
+let g:go_addtags_transform = 'camelcase'
+let g:go_doc_url = 'http://localhost:6060'
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {
+      \ 'goimports': '-local code.idesign.center',
+      \ 'gofmt': '-s',
+      \ }
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_list_type = "quickfix"
+nnoremap <leader>d :GoDocBrowser<cr>
+nnoremap <leader>si :GoSameIds<cr>
+nnoremap <leader>sc :GoSameIdsClear<cr>
+nnoremap <leader>a :GoAlternate!<cr>
 
 " ultisnips settings
 let g:UltiSnipsExpandTrigger="<tab>"
