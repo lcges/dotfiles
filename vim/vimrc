@@ -40,6 +40,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'digitaltoad/vim-jade'
 Plug 'nikvdp/ejs-syntax'
 Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
 
 " Go
 if
