@@ -13,3 +13,5 @@
 	gpgsign = true
 [http "https://gopkg.in"]
 	followRedirects = true
+[url "ssh://git@github.com/ges-sh/"]
+  insteadOf = https://github.com/ges-sh/
