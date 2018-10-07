@@ -12,6 +12,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
+Plug 'altercation/vim-colors-solarized'
 Plug 'w0ng/vim-hybrid'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
@@ -19,6 +20,7 @@ Plug 'vim-scripts/lastpos.vim'
 Plug 'scrooloose/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'machakann/vim-highlightedyank'
+Plug 'edkolev/tmuxline.vim'
 
 " General edit tools
 Plug 'tpope/vim-surround'
@@ -107,9 +109,9 @@ if &t_Co > 2 || has("gui_running")
     colorscheme elflord
   else
     try
-      set background=dark
-      let g:hybrid_custom_term_colors = 1
-      colorscheme hybrid
+      set background=light
+      call togglebg#map("<F5>")
+      colorscheme solarized
     catch /^Vim\%((\a\+)\)\=:E185/
       set background=light
     endtry
