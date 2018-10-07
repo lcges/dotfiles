@@ -124,7 +124,7 @@ au!
 
 " Set filetype specific options
 autocmd FileType text     setlocal textwidth=78
-autocmd FileType go       setlocal noexpandtab
+autocmd FileType go       setlocal noexpandtab foldmethod=syntax
 autocmd FileType make     setlocal noexpandtab ts=8 sw=8
 autocmd FileType nginx    setlocal expandtab ts=4 sw=4
 autocmd FileType c        setlocal noexpandtab ts=4 sw=4
@@ -198,8 +198,9 @@ let g:go_fmt_options = {
       \ 'gofmt': '-s',
       \ }
 let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
+let g:go_highlight_function_calls = 0
 let g:go_list_type = "quickfix"
+let g:go_fold_enable = ['import', 'package_comment']
 nnoremap <leader>d :GoDocBrowser<cr>
 nnoremap <leader>si :GoSameIds<cr>
 nnoremap <leader>sc :GoSameIdsClear<cr>
