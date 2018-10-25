@@ -238,3 +238,7 @@ endfunction
 
 " Fix typoos
 iabbrev directroy directory
+
+" fugitive settings
+nnoremap <leader>b :Gbrowse<cr>
+vnoremap <leader>b :Gbrowse<cr>
