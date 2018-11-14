@@ -110,7 +110,6 @@ if &t_Co > 2 || has("gui_running")
   else
     try
       set background=light
-      call togglebg#map("<F5>")
       colorscheme solarized
     catch /^Vim\%((\a\+)\)\=:E185/
       set background=light
