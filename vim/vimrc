@@ -102,11 +102,10 @@ if &t_Co > 2 || has("gui_running")
   if !has("gui_running") && &term =~ 'linux'
     colorscheme elflord
   else
+    set background=light
     try
-      set background=light
       colorscheme solarized
     catch /^Vim\%((\a\+)\)\=:E185/
-      set background=light
     endtry
   endif
 endif
