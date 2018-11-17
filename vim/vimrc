@@ -39,7 +39,6 @@ Plug 'digitaltoad/vim-jade'
 Plug 'nikvdp/ejs-syntax'
 Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
-Plug 'martinda/Jenkinsfile-vim-syntax'
 
 " Go
 if
