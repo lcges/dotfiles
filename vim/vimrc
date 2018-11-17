@@ -17,7 +17,7 @@ Plug 'w0ng/vim-hybrid'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/lastpos.vim'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'machakann/vim-highlightedyank'
 Plug 'edkolev/tmuxline.vim'
@@ -50,7 +50,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 if
   \ v:version > 704 || (v:version == 704 && has('patch1689'))
   \ || has('nvim')
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'fatih/vim-go'
 endif
 
 " Other filetypes
@@ -110,7 +110,6 @@ if &t_Co > 2 || has("gui_running")
   else
     try
       set background=light
-      call togglebg#map("<F5>")
       colorscheme solarized
     catch /^Vim\%((\a\+)\)\=:E185/
       set background=light
