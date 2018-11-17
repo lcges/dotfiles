@@ -141,9 +141,6 @@ nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Used by vim-rails to preview pages
-command! -bar -nargs=1 OpenURL :!chromium <args>
-
 " Disable F1 help because its dumb
 nmap <F1> :echo<CR>
 imap <F1> <C-o>:echo<CR>
@@ -198,11 +195,6 @@ nnoremap <leader>si :GoSameIds<cr>
 nnoremap <leader>sc :GoSameIdsClear<cr>
 nnoremap <leader>a :GoAlternate!<cr>
 
-" ultisnips settings
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " tagbar settings
 nnoremap <leader>t :TagbarToggle<cr>
 
@@ -227,9 +219,6 @@ function! GetGitoliteFold(lnum)
   endif
   return '0'
 endfunction
-
-" Fix typoos
-iabbrev directroy directory
 
 " fugitive settings
 nnoremap <leader>b :Gbrowse<cr>
