@@ -12,6 +12,7 @@ Plug 'Shougo/vimproc.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
+Plug 'altercation/vim-colors-solarized'
 Plug 'w0ng/vim-hybrid'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
@@ -19,6 +20,7 @@ Plug 'vim-scripts/lastpos.vim'
 Plug 'scrooloose/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'machakann/vim-highlightedyank'
+Plug 'edkolev/tmuxline.vim'
 
 " General edit tools
 Plug 'tpope/vim-surround'
@@ -107,9 +109,9 @@ if &t_Co > 2 || has("gui_running")
     colorscheme elflord
   else
     try
-      set background=dark
-      let g:hybrid_custom_term_colors = 1
-      colorscheme hybrid
+      set background=light
+      call togglebg#map("<F5>")
+      colorscheme solarized
     catch /^Vim\%((\a\+)\)\=:E185/
       set background=light
     endtry
@@ -122,7 +124,7 @@ au!
 
 " Set filetype specific options
 autocmd FileType text     setlocal textwidth=78
-autocmd FileType go       setlocal noexpandtab
+autocmd FileType go       setlocal noexpandtab foldmethod=syntax
 autocmd FileType make     setlocal noexpandtab ts=8 sw=8
 autocmd FileType nginx    setlocal expandtab ts=4 sw=4
 autocmd FileType c        setlocal noexpandtab ts=4 sw=4
@@ -192,12 +194,13 @@ let g:go_addtags_transform = 'camelcase'
 let g:go_doc_url = 'http://localhost:6060'
 let g:go_fmt_command = "goimports"
 let g:go_fmt_options = {
-      \ 'goimports': '-local code.idesign.center',
+      \ 'goimports': '-local github.com/ges-sh/,code.idesign.center',
       \ 'gofmt': '-s',
       \ }
 let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
+let g:go_highlight_function_calls = 0
 let g:go_list_type = "quickfix"
+let g:go_fold_enable = ['import', 'package_comment']
 nnoremap <leader>d :GoDocBrowser<cr>
 nnoremap <leader>si :GoSameIds<cr>
 nnoremap <leader>sc :GoSameIdsClear<cr>
@@ -235,3 +238,7 @@ endfunction
 
 " Fix typoos
 iabbrev directroy directory
+
+" fugitive settings
+nnoremap <leader>b :Gbrowse<cr>
+vnoremap <leader>b :Gbrowse<cr>
