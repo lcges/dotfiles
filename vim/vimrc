@@ -12,7 +12,7 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-vinegar'
-Plug 'altercation/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
 Plug 'majutsushi/tagbar'
 Plug 'vim-syntastic/syntastic'
 Plug 'christoomey/vim-tmux-navigator'
@@ -102,10 +102,12 @@ if &t_Co > 2 || has("gui_running")
   if !has("gui_running") && &term =~ 'linux'
     colorscheme elflord
   else
-    set background=light
     try
-      colorscheme solarized
+      set background=dark
+      let g:hybrid_custom_term_colors = 1
+      colorscheme hybrid
     catch /^Vim\%((\a\+)\)\=:E185/
+      set background=light
     endtry
   endif
 endif
