@@ -25,7 +25,6 @@ Plug 'vim-scripts/matchit.zip'
 " Tools integration
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'vim-scripts/loremipsum'
 
 if executable('task')
   Plug 'farseer90718/vim-taskwarrior'
