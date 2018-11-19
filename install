@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ln -sfT .config/dotfiles/inputrc ~/.inputrc
 ln -sfT .config/dotfiles/bashrc ~/.bashrc
 ln -sfT .config/dotfiles/jshintrc ~/.jshintrc
 ln -sfT .config/dotfiles/gitconfig ~/.gitconfig
@@ -7,15 +8,8 @@ ln -sfT .config/dotfiles/tmux.conf ~/.tmux.conf
 ln -sfT .config/dotfiles/vim ~/.vim
 ln -sfT dotfiles/vim ~/.config/nvim
 
-if ! [ -e ~/.ssh ]
-then
-  cp -a ~/.config/dotfiles/ssh ~/.ssh
-fi
-
-if which >/dev/null vim
-then
+if which >/dev/null vim; then
   vim +PlugInstall +qall
-elif which >/dev/null nvim
-then
+elif which >/dev/null nvim; then
   nvim +PlugInstall +qall
 fi
