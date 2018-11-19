@@ -1,6 +1,7 @@
 [user]
 	name = Leszek Czak
-	email = lc@idesign.center
+	email = lc@ges.sh
+  signingkey = 1D10949F814445B1 
 [core]
 	editor = vim
 	excludesfile = ~/.config/dotfiles/gitignore_global
@@ -8,3 +9,9 @@
 	tool = vimdiff
 [push]
 	default = simple
+[http "https://gopkg.in"]
+	followRedirects = true
+[commit]
+  gpgsign = true
+[url "ssh://git@github.com/ges-sh/"]
+  insteadOf = "https://github.com/ges-sh/"

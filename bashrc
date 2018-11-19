@@ -9,14 +9,6 @@ parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-vagrant-ssh-options() {
-  vagrant ssh-config | grep -vE '^$|^Host ' | awk -v ORS=' ' '{print "-o " $1 "=" $2}'
-}
-
-vagrant-scp() {
-  scp $(vagrant-ssh-options) "$@"
-}
-
 docker-cleanup() {
   docker rm -v $(docker ps -a -q -f status=exited)
   docker rmi $(docker images -q -f dangling=true)
@@ -62,11 +54,8 @@ PS1='\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\] $(parse_git_branch)\n\$ '
 
 eval "$(dircolors -b)"
 alias grep='grep --color'
-
-alias uu='sudo apt-fast update -y && sudo apt-fast upgrade -y && sudo apt-fast autoremove -y'
 alias ll='ls -alFh'
 alias info='info --vi-keys'
-alias godeps="comm -2 -3 <(go list -f '{{join .Deps \"\n\"}}' | sort) <(go list std | sort)"
 
 if which >/dev/null 2>&1 nvim
 then

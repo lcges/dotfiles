@@ -17,14 +17,16 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/lastpos.vim'
 Plug 'scrooloose/syntastic'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'machakann/vim-highlightedyank'
+Plug 'lilydjwg/colorizer'
 
 " General edit tools
 Plug 'tpope/vim-surround'
-Plug 'matchit.zip'
+Plug 'vim-scripts/matchit.zip'
 
 " Tools integration
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/loremipsum'
 
 if executable('task')
   Plug 'farseer90718/vim-taskwarrior'
@@ -33,23 +35,21 @@ endif
 " Snippets
 Plug 'mattn/emmet-vim'
 
-" Ruby/rails
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-bundler'
-Plug 'kchmck/vim-coffee-script'
-
 " JavaScript
 Plug 'pangloss/vim-javascript'
 Plug 'digitaltoad/vim-jade'
-
+Plug 'nikvdp/ejs-syntax'
 " Go
 Plug 'fatih/vim-go'
 
 " Other filetypes
 Plug 'cespare/vim-toml'
-Plug 'evanmiller/nginx-vim-syntax'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'chr4/nginx.vim'
+
+" General
+Plug 'Matt-Deacalion/vim-systemd-syntax'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
